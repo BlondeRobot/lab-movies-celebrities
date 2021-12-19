@@ -26,7 +26,7 @@ router.get("/celebrities", (req, res, next) => {
       res.render("celebrities/celebrities", { returnedCelebrities });
       console.log(returnedCelebrities);
     })
-    .catch((error) => console.log("Error while finding drones occurred"));
+    .catch((error) => console.log("Error while finding celebrities occurred"));
 });
 
 module.exports = router;

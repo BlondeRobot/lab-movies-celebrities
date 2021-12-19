@@ -17,4 +17,15 @@ router.post("/movies/create", (req, res, next) => {
     });
 });
 
+// iteration 7 all movies
+
+router.get("/movies", (req, res, next) => {
+  Movie.find()
+    .then((returnedMovies) => {
+      res.render("movies/movies", { returnedMovies });
+      console.log(returnedMovies);
+    })
+    .catch((error) => console.log("Error while finding movies occurred"));
+});
+
 module.exports = router;
