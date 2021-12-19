@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Celebrity = require("../models/celebrity.model");
 
+// iteration 3 new celeberity
+
 router.get("/celebrities/create", (req, res, next) => {
   res.render("celebrities/new-celebrity");
 });
@@ -13,6 +15,18 @@ router.post("/celebrities/create", (req, res, next) => {
         console.log("Error while creating celebrity occurred", error)
         res.redirect('/celebrities/create')
         });
+});
+
+// iteration 4 all celebrities
+
+router.get("/celebrities", (req, res, next) => {
+
+  Celebrity.find()
+    .then((returnedCelebrities) => {
+      res.render("celebrities/celebrities", { returnedCelebrities });
+      console.log(returnedCelebrities);
+    })
+    .catch((error) => console.log("Error while finding drones occurred"));
 });
 
 module.exports = router;
