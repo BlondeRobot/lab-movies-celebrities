@@ -35,10 +35,21 @@ router.get("/movies/:id", (req, res, next) => {
   const { id } = req.params;
 
   Movie.findById(id)
+    .populate("cast")
     .then((foundMovie) => {
       res.render("movies/movie-details", { foundMovie });
     })
     .catch((error) => next(error));
 });
+
+// iteration 9 delete movie
+router.post("/movies/:id/delete", (req, res, next) => {
+  const { id } = req.params;
+  Movie.findByIdAndDelete(id)
+    .then(() => res.redirect("/movies"))
+    .catch((error) => console.log("Error while deleting movie occurred"));
+});
+
+
 
 module.exports = router;
