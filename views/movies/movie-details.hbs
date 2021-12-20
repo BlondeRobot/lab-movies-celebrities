@@ -28,5 +28,8 @@ in new movie form where I can't select cast members --}}
     <form method="POST" action="/movies/{{foundMovie.id}}/delete">
         <button>Delete movie</button>
     </form>
+    <form method="GET" action="/movies/{{foundMovie.id}}/edit">
+        <button type="submit">Edit movie</button>
+    </form>
 
 </div>

@@ -50,6 +50,28 @@ router.post("/movies/:id/delete", (req, res, next) => {
     .catch((error) => console.log("Error while deleting movie occurred"));
 });
 
+// iteration 10 edit movie
+
+router.get("/movies/:id/edit", (req, res, next) => {
+
+  const { id } = req.params;
+
+  Movie.findById(id)
+    .then((movieToEdit) => {
+      res.render("movies/edit-movie", { movieToEdit });
+    })
+    .catch((error) => next(error));
+});
+
+router.post("/movies/:id/edit", (req, res, next) => {
+
+  const { id } = req.params;
+  const { title, genre, plot, cast } = req.body;
+
+  Movie.findByIdAndUpdate(id, { title, genre, plot, cast })
+    .then(() => res.redirect("/movies"))
+    .catch((error) => console.log("Error while updating drone occurred"));
+});
 
 
 module.exports = router;
