@@ -12,7 +12,7 @@
     <label> Plot:
         <input type="text" name="plot" />
     </label>
-//doesn't work, doesn't show list of celebrities in the form view
+{{!-- doesn't work, doesn't show list of celebrities in the form view --}}
     <label> Cast:
         <select name="cast" id="cast" multiple>
             {{#each returnedCelebrities}}
@@ -20,6 +20,7 @@
             {{/each}}
         </select>
     </label>
+
 
     <button type="submit"> Create </button>
 </form>

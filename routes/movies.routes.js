@@ -28,4 +28,17 @@ router.get("/movies", (req, res, next) => {
     .catch((error) => console.log("Error while finding movies occurred"));
 });
 
+// iteration 8 movie detail route
+
+router.get("/movies/:id", (req, res, next) => {
+
+  const { id } = req.params;
+
+  Movie.findById(id)
+    .then((foundMovie) => {
+      res.render("movies/movie-details", { foundMovie });
+    })
+    .catch((error) => next(error));
+});
+
 module.exports = router;
