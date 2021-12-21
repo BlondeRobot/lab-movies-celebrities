@@ -61,6 +61,7 @@ router.get("/movies/:id/edit", (req, res, next) => {
   const { id } = req.params;
 
   Movie.findById(id)
+    .populate('cast', 'name occupation catchPhrase')
     .then((movieToEdit) => {
       res.render("movies/edit-movie", { movieToEdit });
     })
@@ -74,7 +75,7 @@ router.post("/movies/:id/edit", (req, res, next) => {
 
   Movie.findByIdAndUpdate(id, { title, genre, plot, cast })
     .then(() => res.redirect("/movies"))
-    .catch((error) => console.log("Error while updating drone occurred"));
+    .catch((error) => console.log("Error while updating movie occurred"));
 });
 
 
