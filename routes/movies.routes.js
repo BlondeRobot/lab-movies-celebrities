@@ -5,7 +5,11 @@ const Celebrity = require("../models/celebrity.model");
 // iteration 6 new movie
 
 router.get("/movies/create", (req, res, next) => {
-  res.render("movies/new-movie");
+  Celebrity.find()
+    .then((returnedCelebrities) => {
+      res.render("movies/new-movie", { returnedCelebrities });
+    })
+    .catch((error) => console.log("Error while finding celebrities occurred")); 
 });
 router.post("/movies/create", (req, res, next) => {
   const { title, genre, plot, cast } = req.body;

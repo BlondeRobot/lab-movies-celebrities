@@ -10,8 +10,13 @@
     <input type="text" name="plot" value="{{movieToEdit.plot}}" />
 
 
-    <label for="cast"></label>
-    <input type="checkbox" name="cast" value="{{_id}}" id="cast" />
+    <label for="cast">cast
+        <select name='cast' id='cast'multiple>
+            {{#each movieToEdit.cast}}
+                 <option value="{{this.id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </label>
 
 
     <button type="submit">Update Movie</button>
